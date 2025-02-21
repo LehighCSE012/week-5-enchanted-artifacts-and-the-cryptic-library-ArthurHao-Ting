@@ -137,19 +137,20 @@ def main():
     has_treasure = random.choice([True, False])
     display_player_status(player_stats)
     player_stats = handle_path_choice(player_stats)
-    
+
     if player_stats['health'] > 0:
         treasure_obtained_in_combat = combat_encounter(player_stats, monster_health, has_treasure)
         if treasure_obtained_in_combat is not None:
             check_for_treasure(treasure_obtained_in_combat)
-        
+
         if random.random() < 0.3 and artifacts:
             artifact_name = random.choice(list(artifacts.keys()))
             player_stats, artifacts = discover_artifact(player_stats, artifacts, artifact_name)
             display_player_status(player_stats)
-        
+ 
         if player_stats['health'] > 0:
-            player_stats, inventory, clues = enter_dungeon(player_stats, inventory, dungeon_rooms, clues)
+            player_stats, inventory, clues = enter_dungeon\
+                (player_stats, inventory, dungeon_rooms, clues)
             print("\n--- Game End ---")
             display_player_status(player_stats)
             print("Final Inventory:", inventory)
