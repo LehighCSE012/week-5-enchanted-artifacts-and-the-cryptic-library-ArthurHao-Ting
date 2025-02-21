@@ -72,7 +72,7 @@ def enter_dungeon(player_stats, inventory, dungeon_rooms, clues):
     """Handles dungeon exploration, including the Cryptic Library."""
     room = random.choice(dungeon_rooms)
     print(f"You enter: {room[0]}")
-    
+
     if room[0] == "Cryptic Library":
         print("A vast library filled with ancient, cryptic texts.")
         possible_clues = [
@@ -95,6 +95,13 @@ def check_for_treasure(has_treasure):
         print("You found the hidden treasure! You win!")
     else:
         print("The monster did not have the treasure. You continue your journey.")
+
+def acquire_item(inventory,item):
+    """Add items to the inventory."""
+    inventory.append(item)
+    print(f"You acquired a {item}!")
+    updated_inventory_list = [item]
+    return updated_inventory_list
 
 def main():
     """Main function"""
